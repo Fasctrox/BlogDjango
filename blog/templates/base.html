@@ -1,0 +1,295 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+        <link type="image/x-icon" href='{% static "images/Heisenberg.ico" %}' alt="Icono"/>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock title %}</title>
+		<link rel="stylesheet" href= '{% static "css/plantilla.css" %}'/>
+	</head>
+	<body>
+		<header id="main-header">
+		<a id="logo-header" href="#">
+			<span class="site-name">Facundo Espinosa</span>
+			<span class="site-desc">Me gusta dormir y ver peliculas</span>
+		</a>
+		<nav>
+			<ul>
+				<li><a href="#">Inicio</a></li>
+				<li><a href="#">Acerca de</a></li>
+				<li><a href="#">Contacto</a></li>
+			</ul>
+		</nav>
+ 			</header>
+ 				<section id="main-content">
+				<article>
+					<header>
+					<h1>EL Diario del Cufa</h1>
+					</header>
+					<img src='{% static "images/Trono.jpg" %}' alt= "My image"/>
+				    
+                    <!-- CALCULADORA -->
+                    
+                    <div class="Content">
+                        <script type="text/javascript" src='{% static "js/script.js" %}'></script>
+<!--                        <style>
+                            input[type=button],input[type="text"]{
+                                width: 100%;
+                                height: 100%;
+                                font-size: 30px;
+                                }
+
+                                table,form{
+                                    width: 500px;
+                                    height: 400px;
+                                    margin: 0 auto;
+                                }
+
+                                .titulo{
+	                               text-align: center;
+                                }
+                        </style>-->
+                        <form name="fo">
+                        <h2 class="subtitulo">Calculadora</h2>
+                        <table>
+                            <tr>
+                                <td colspan="5"><input type="text" name="valores" id="valores" onkeypress="return solonumeros(event)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="button" value="7" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="8" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="9" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="+" onclick="comprobar(value)"></td>
+                                    <td><input type="button" value="-" onclick="comprobar(value)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="button" value="4" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="5" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="6" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="*" onclick="comprobar(value)"></td>
+                                    <td><input type="button" value="/" onclick="comprobar(value)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="button" value="1" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="2" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="3" onClick="retornar(value)"></td>
+                                    <td><input type="button" value="<-" onclick="eliminar()"></td>
+                                    <td><input type="button" value="C" onclick="eliminar_todo()"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><input type="button" value="0" onClick="retornar(value)"></td>
+                                    <td></td>
+                                    <td colspan="2"><input type="button" value="=" onclick="calcular()"></td>
+                                </tr>
+	                       </table>
+                    </div>
+                    
+                        <!--    CAMBIO DE MONEDA -->
+                    <div class="Content">    
+                        <h2 class="subtitulo">Cambio de moneda</h2>
+                        <form name="fo">
+                        <input onkeypress="return solonumeros(event)" type="text" name="valores1" id="valores1" > 
+                        <select name="monedas1" onclick="cambio()" >
+                            <option value="1">Dolares</option>
+                            <option value="1.13">Euro</option>
+                            <option value="0.27">Reales</option>
+                            <option value="0.0677">Pesos Argentinos</option>
+                            <option value="0.0015">Chilenos</option>
+                            <option value="0.031">Uruguayos</option>
+                        </select>
+                        <input onkeypress="return solonumeros2(event)" type="text" name="valores2" id="valores2" >
+                        <select name="monedas2" onclick="cambio()" >
+                            <option value="1">Dolares</option>
+                            <option value="1.13">Euro</option>
+                            <option value="0.27">Reales</option>
+                            <option value="0.0677">Pesos Argentinos</option>
+                            <option value="0.0015">Chilenos</option>
+                            <option value="0.031">Uruguayos</option>
+                        </select>
+                        <input onclick="borrar()" value="Borrar" type="button" id="button">
+                        </form>
+                        <script>
+                        function borrar(){
+                            document.fo.valores1.value= "";
+                            document.fo.valores2.value= "";
+                            }
+
+                        function solonumeros(e){
+                            key=e.keyCode || e.which;
+                            teclado=String.fromCharCode(key);
+                            numeros="0123456789.";
+                            if(numeros.indexOf(teclado)==-1 ){
+                                return false;
+                                }
+                            }
+    
+                        function solonumeros2(e){
+                            key=e.keyCode || e.which;
+                            teclado=String.fromCharCode(key);
+                            numeros="";
+                            if(numeros.indexOf(teclado)==-1 ){
+                            return false;
+                            }
+                        }
+    
+                        function cambio(){
+                            var cambiar = document.fo.valores1.value;
+                            var ayuda1 = document.fo.monedas1.value;
+                            var ayuda2 = document.fo.monedas2.value;
+                            var pri =eval(cambiar*ayuda1);
+                            var seg =eval(pri/ayuda2);
+                            document.getElementById("valores2").value=seg;
+                        }
+    
+                    </script>
+                        </div>
+                        
+                                            <!-- PROGRAMA CHISTOSO-->
+                        <div>	
+	                       <h1 class="Content">Haga click en aceptar y conocera los secretos del universo</h1>
+	                       <button id="btn" onmouseover="random()">Aceptar</button>
+	                       <script>
+		                      function random(){
+			                     document.querySelector('button').style.top=Math.floor((Math.random()* 950) + 920) + 'px';
+			                     document.querySelector('button').style.right=Math.floor((Math.random()* 1250)+ 1) + 'px';
+		                      }
+	                       </script>
+                            <style type="text/css">
+	                           button{
+			                     position: absolute;
+			                     top: 200%;
+			                     right: 48%;
+                                }
+	                       </style>
+                        </div>
+                        
+                                                <!--IMAGENES-->
+                        
+                        <div class="Content">
+                            <h2 class="subtitulo">Cambio de imagenes</h2>
+                            <img src='{% static "images/Imagen1.jpg" %}' id="im"/>
+                            <progress id="barra"></progress>
+                            <span id="valor"></span> %
+                            <script>
+                                var tiempo=5000;
+                                var maximo = 100;
+                                var j=1;
+                                document.getElementById("barra").setAttribute("value",0);
+                                document.getElementById("barra").setAttribute("max",maximo);
+                                function cambio(){
+                                    var image=["Imagen1.jpg","Imagen2.jpg","Imagen3.jpg","Imagen4.png","Imagen5.jpg"];
+                                    var num = Math.floor(Math.random() * image.length);
+                                    document.getElementById("im").src="Blog/my_static_files/images/"+image[num] 
+                                }
+                                function aumentar(){
+                                    document.getElementById("valor").innerHTML = j;
+                                    document.getElementById("barra").setAttribute("value",j++);
+                                    if (j==maximo){
+                                    cambio();
+                                    j=1;
+                                    }
+                                }  
+                                cambio();
+                                setInterval(aumentar,50);
+                            </script> 
+                        </div>  
+                        
+                                            <!--CRONOMETRO-->
+                        
+                        <div class="Content">
+                            <h1 class="subtitulo">Cronometro</h3>
+                            <link rel="stylesheet" href="css/reloj.css" type="text/css" media="screen">
+                            <div id=relojj>
+                                <div id="reloj">0 : 00 : 00 : 00</div>
+                                <form name="cron" action="#"><br><br>
+                                <input type="button" value="Empezar" name="empieza" />
+                                <input type="button" value="Parar" name="para" />
+                                <input type="button" value="Continuar" name="continua" />
+                                <input type="button" value="Reiniciar" name="reinicia" />
+                                </form>
+                            </div>
+                            <script>
+                                window.onload = function() {
+                                    visor=document.getElementById("reloj"); //localizar pantalla del reloj
+                                    //asociar eventos a botones: al pulsar el botón se activa su función.
+                                    document.cron.empieza.onclick = empezar; 
+                                    document.cron.para.onclick = parar;
+                                    document.cron.continua.onclick = continuar;
+                                    document.cron.reinicia.onclick = reiniciar;
+                                }
+                                //variables de inicio:
+                                var marcha=0; //control del temporizador
+                                var cro=0; //estado inicial del cronómetro.
+                                //cronometro en marcha. Empezar en 0:
+                                function empezar() {
+                                    if (marcha==0) { //solo si el cronómetro esta parado
+                                    emp=new Date() //fecha actual
+                                    elcrono=setInterval(tiempo,10); //función del temporizador.
+                                    marcha=1 //indicamos que se ha puesto en marcha.
+                                    }
+                                }
+                                function tiempo() { //función del temporizador
+                                    actual=new Date() //fecha en el instante
+                                    cro=actual-emp //tiempo transcurrido en milisegundos
+                                    cr=new Date() //fecha donde guardamos el tiempo transcurrido
+                                    cr.setTime(cro) 
+                                    cs=cr.getMilliseconds() //milisegundos del cronómetro
+                                    cs=cs/10; //paso a centésimas de segundo.
+                                    cs=Math.round(cs)
+                                    sg=cr.getSeconds(); //segundos del cronómetro
+                                    mn=cr.getMinutes(); //minutos del cronómetro
+                                    ho=cr.getHours()-21; //horas del cronómetro
+                                    if (cs<10) {cs="0"+cs;}  //poner siempre 2 cifras en los números
+                                    if (sg<10) {sg="0"+sg;} 
+                                    if (mn<10) {mn="0"+mn;} 
+                                    visor.innerHTML=ho+" : "+mn+" : "+sg+" : "+cs; //pasar a pantalla.
+                                }
+                                //parar el cronómetro
+                                function parar() { 
+                                    if (marcha==1) { //sólo si está en funcionamiento
+                                    clearInterval(elcrono); //parar el crono
+                                    marcha=0; //indicar que está parado.
+                                    }		
+                                }		 
+                                //Continuar una cuenta empezada y parada.
+                                function continuar() {
+                                    if (marcha==0) { //sólo si el crono está parado
+                                    emp2=new Date(); //fecha actual
+                                    emp2=emp2.getTime(); //pasar a tiempo Unix
+                                    emp3=emp2-cro; //restar tiempo anterior
+                                    emp=new Date(); //nueva fecha inicial para pasar al temporizador 
+                                    emp.setTime(emp3); //datos para nueva fecha inicial.
+                                    elcrono=setInterval(tiempo,10); //activar temporizador
+                                    marcha=1;
+                                    }		
+                                }
+                                //Volver al estado inicial
+                                function reiniciar() {
+                                    if (marcha==1) { //si el cronómetro está en marcha:
+                                        clearInterval(elcrono); //parar el crono
+                                        marcha=0;	//indicar que está parado
+                                    }
+                                    cro=0; //tiempo transcurrido a cero
+                                    visor.innerHTML = "0 : 00 : 00 : 00"; 
+                                }	
+
+                            </script>
+                        </div>
+                            
+                        <br>
+                        <br>
+                        <br>
+                        
+                        <!--PUBLICACIONES-->
+					<div class="Content">
+                        <h2 class="subtitulo">Publicaciones</h2>
+                        {% block main %}{% endblock main %}
+                    </div>
+
+				</article> 
+				</section>
+			<footer id="main-footer">
+				<p>@2016</p>
+			</footer>
+	</body>
+</html>
